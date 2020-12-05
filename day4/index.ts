@@ -47,21 +47,26 @@ const day4 = async () => {
       );
     };
 
-    const hasValidBirthDate = (value: number) => value >= 1920 && value <= 2002;
+    const withinMinMaxValue = (value: number, min: number, max: number) =>
+      value >= min && value <= max;
 
-    const hasValidIssueYear = (value: number) => value >= 2010 && value <= 2020;
+    const hasValidBirthDate = (value: number) =>
+      withinMinMaxValue(value, 1920, 2002);
+
+    const hasValidIssueYear = (value: number) =>
+      withinMinMaxValue(value, 2010, 2020);
 
     const hasValidExpirationYear = (value: number) =>
-      value >= 2020 && value <= 2030;
+      withinMinMaxValue(value, 2020, 2030);
 
     const hasValidHeight = (value: string) => {
       if (value.endsWith("cm")) {
         value = value.replace("cm", "");
-        return +value >= 150 && +value <= 193;
+        return withinMinMaxValue(+value, 150, 193);
       }
       if (value.endsWith("in")) {
         value = value.replace("in", "");
-        return +value >= 59 && +value <= 76;
+        return withinMinMaxValue(+value, 59, 76);
       }
       return false;
     };
