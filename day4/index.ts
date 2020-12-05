@@ -1,10 +1,6 @@
 const day4 = async () => {
   const part1 = async () => {
-    const isValid = (row: string, word: string) => {
-      if (row.includes(word)) return true;
-
-      return false;
-    };
+    const isValid = (row: string, word: string) => row.includes(word);
 
     const validPassports = (await Deno.readTextFile("./input.txt"))
       .split("\n\n")
